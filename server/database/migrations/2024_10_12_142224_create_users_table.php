@@ -12,8 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->string('user_name'); // User name column
+            $table->string('password'); // Password column
+            $table->unsignedBigInteger('role_id'); // Foreign key for roles table
+            $table->string('email')->unique(); // Email column
+            $table->string('image')->nullable(); // Image column, allows null values
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
+
+            // Define the foreign key constraint for role_id
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
         });
     }
 

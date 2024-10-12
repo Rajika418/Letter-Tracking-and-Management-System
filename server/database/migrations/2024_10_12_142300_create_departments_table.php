@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('departments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->string('name'); // Department name
+            
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
+
+            // Define the foreign key constraint for job_id
+           
         });
     }
 

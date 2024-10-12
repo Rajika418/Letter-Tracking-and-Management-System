@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('department_positions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->unsignedBigInteger('department_id'); // Foreign key for departments table
+            $table->string('name'); // Position name
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
+
+            // Define the foreign key constraint for department_id
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
 

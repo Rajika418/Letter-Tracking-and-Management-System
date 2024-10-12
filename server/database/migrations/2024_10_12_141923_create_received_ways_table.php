@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('received_ways', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // Primary key
+            $table->string('way'); // Add 'way' column as a string
+            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
         });
     }
 
