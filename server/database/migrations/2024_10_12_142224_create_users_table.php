@@ -17,7 +17,10 @@ return new class extends Migration
             $table->string('password'); // Password column
             $table->unsignedBigInteger('role_id'); // Foreign key for roles table
             $table->string('email')->unique(); // Email column
-            $table->string('image')->nullable(); // Image column, allows null values
+            $table->string('image')->nullable();
+            $table->string('password_reset_token')->nullable(); // Token for password reset
+            $table->timestamp('password_reset_expires_at')->nullable(); // Expiration time for password reset token
+            $table->softDeletes(); 
             $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
 
             // Define the foreign key constraint for role_id
